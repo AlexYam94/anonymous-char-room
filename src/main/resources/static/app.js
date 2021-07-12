@@ -26,6 +26,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/greetings', function (greeting) {
+            $("#scrollCol").animate({scrollTop: $("#conversation").height()},1000);
             showGreeting(JSON.parse(greeting.body).content);
         });
     });
